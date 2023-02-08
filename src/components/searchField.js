@@ -13,11 +13,23 @@ function SearchField({placeholder}) {
   const [date, setDate] = useState(new Date())
   const [numGuest, setNumGuest] = useState(1)
 
+  const selectionRange = {
+    startDate: date,
+    endDate: date,
+    key: 'selection',
+  }
 
-  function resetInput () {
+  const handleSelect = (ranges) => {
+    setDate(ranges.selection)
+  }
+
+  const resetInput = () => {
     setSearchinput("")
   }
 
+  const search = () => {
+    console.log("Søk")
+  }
 
 
 
@@ -61,5 +73,7 @@ function SearchField({placeholder}) {
     </header>
   )
 }
+
+
 
 export default SearchField
