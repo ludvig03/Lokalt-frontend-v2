@@ -8,19 +8,20 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function SearchField({placeholder}) {
 
-
   const [searchInput, setSearchinput] = useState("")
-  const [date, setDate] = useState(new Date())
-  const [numGuest, setNumGuest] = useState(1)
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [numGuest, setNumGuest] = useState(0)
 
   const selectionRange = {
-    startDate: date,
-    endDate: date,
+    startDate: startDate,
+    endDate: endDate,
     key: 'selection',
   }
 
   const handleSelect = (ranges) => {
-    setDate(ranges.selection)
+    setStartDate(ranges.selection.startDate)
+    setEndDate(ranges.selection.endDate)
   }
 
   const resetInput = () => {
@@ -31,6 +32,11 @@ function SearchField({placeholder}) {
     console.log("Søk")
   }
 
+  const setDate = (date) => {
+    setStartDate(date)
+    setEndDate(date)
+  }
+
 
 
   return (
@@ -38,14 +44,14 @@ function SearchField({placeholder}) {
 
       <div className="flex items-center rounded-full pt-2 md:py-2 ">
         <input value={searchInput} onChange={(e) => setSearchinput(e.target.value)}
-        type="text" placeholder={placeholder || "Søk her"} className=" flex-grow pl-5 bg-transparent
+        type="text" placeholder={placeholder || "Søk her..."} className=" flex-grow pl-5 bg-transparent
          outline-none text-gray-600 placeholder-gray-400 w-full md:text-lg md:pl-10"></input>
 
       </div>
       {searchInput && (
         <div className='flex flex-col col-span-3 mx-auto'>
           <Calendar
-            date={selection.date}
+            date={selectionRange.startDate}
             onChange={(date) => setDate(date)}
           />
 

@@ -3,9 +3,9 @@ import Image from 'next/legacy/image'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
 import SmallCard from '../components/SmallCard'
-import MediumCard from '../components/MediumCard'
+import MediumCard from './sliderCard'
 import LargeCard from '../components/LargeCard'
-import Footer from "../components/Footer"
+import Footer from "./Footer"
 import { useState } from 'react'
 import Navbar from '../components/NavBar'
 import { useUser } from '@auth0/nextjs-auth0/client'
